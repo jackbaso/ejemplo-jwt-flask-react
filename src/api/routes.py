@@ -54,4 +54,11 @@ def login():
     return jsonify({"token":token}), 200
 
 
-# Validar: endpoint que reciba un token y retorna si este es valido o no
+# Validar: endpoint - Validate that only authenticated users and render this component
+@app.route("/private", methods=["GET"])
+@jwt_required()
+def private():
+    current_user = get_jwt_identity()
+    user = User.query.get(current_user)
+
+    return jsonify(({"email": user.email}))
