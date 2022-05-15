@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Navbar = () => {
+export const NavbarProtected = () => {
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container">
@@ -9,11 +9,11 @@ export const Navbar = () => {
           <span className="navbar-brand mb-0 h1">Jack's API</span>
         </Link>
         <div className="ml-auto">
-          <Link to="/signup">
-            <button className="btn btn-primary mx-2">SignUp</button>
+          <Link to="/profile">
+            <button className="btn btn-primary mx-2">Profile</button>
           </Link>
-          <Link to="/login">
-            <button className="btn btn-primary mx-2">Login</button>
+          <Link to="/logout">
+            <button className="btn btn-primary mx-2">Logout</button>
           </Link>
         </div>
       </div>
