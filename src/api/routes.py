@@ -10,6 +10,8 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 
 api = Blueprint('api', __name__)
 app = Flask(__name__)
+app.config["JWT_SECRET_KEY"] = "super-secret" 
+jwt = JWTManager(app)
 bcrypt = Bcrypt(app)
 
 
@@ -55,10 +57,12 @@ def login():
 
 
 # Validar: endpoint - Validate that only authenticated users and render this component
-@app.route("/private", methods=["GET"])
+@api.route("/verify-token", methods=["POST"])
 @jwt_required()
-def private():
-    current_user = get_jwt_identity()
-    user = User.query.get(current_user)
-
-    return jsonify(({"email": user.email}))
+def verifyToken():
+    token = request.json.get("token")
+    userEmail = get_jwt_identity()
+    if not userEmail:
+        return "No tiene acceso - token invalido", 401
+    print(userEmail)
+    return 'Token correcto', 200
