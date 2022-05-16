@@ -66,3 +66,10 @@ def verifyToken():
         return "No tiene acceso - token invalido", 401
     print(userEmail)
     return 'Token correcto', 200
+
+# Logout
+@api.route("/logout", methods=["POST"])
+@jwt_required()
+def destroyToken():
+    
+    return jsonify(msg="Access token revoked")

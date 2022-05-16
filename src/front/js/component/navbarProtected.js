@@ -9,11 +9,12 @@ export const NavbarProtected = () => {
           <span className="navbar-brand mb-0 h1">Jack's API</span>
         </Link>
         <div className="ml-auto">
+          <span>Welcome!</span>
           <Link to="/profile">
-            <button className="btn btn-primary mx-2">Profile</button>
+            <button className="btn btn-primary mx-2">Your Profile</button>
           </Link>
           <Link to="/logout">
-            <button className="btn btn-primary mx-2">Logout</button>
+            <button className="btn btn-danger mx-2">Logout</button>
           </Link>
         </div>
       </div>

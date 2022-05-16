@@ -8,7 +8,10 @@ import { Single } from "./pages/single";
 import injectContext, { Context } from "./store/appContext";
 import { Signup } from "./pages/signup.jsx";
 import { Login } from "./pages/login.jsx";
+import { Logout } from "./pages/logout.jsx";
+import { Profile } from "./pages/profile.jsx";
 import { Navbar } from "./component/navbar";
+
 import { NavbarProtected } from "./component/navbarProtected";
 import { Footer } from "./component/footer";
 
@@ -47,6 +50,12 @@ const Layout = () => {
             </Route>
             <Route exact path="/signup">
               <Signup />
+            </Route>
+            <Route exact path="/logout">
+              <Logout />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
             </Route>
             <Route>
               <h1>Not found!</h1>

@@ -59,7 +59,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         const resp = await fetch(`${apiURL}/signup`, params);
         if (resp.status !== 201)
           return { code: resp.status, msg: resp.statusText };
-
         return { code: 201, msg: "User signup" };
       },
       login: async (email, password) => {
@@ -75,12 +74,29 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         const resp = await fetch(`${apiURL}/login`, params);
         if (resp.status !== 200)
-          return { code: resp.status, msg: resp.statusText };
+          return alert("Your email or password are invalid");
+          // { code: resp.status, msg: resp.statusText };
         const data = await resp.json();
         const token = data.token;
         setStore({ token });
         localStorage.setItem("token", token);
         return { code: 200, msg: "User signup" };
+      },
+      logout: async () => {
+        /* 
+        const params = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        const resp = await fetch(`${apiURL}/logout`, params);
+        if (resp.status !== 200)
+          return { code: resp.status, msg: resp.statusText };
+        */
+        setStore({ token: "" });
+        localStorage.removeItem("token");
+        return { code: 200, msg: "Session closed" };
       },
     },
   };
