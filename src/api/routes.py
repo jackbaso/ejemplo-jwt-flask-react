@@ -53,6 +53,7 @@ def login():
         raise APIException("Clave invalida", status_code=401)
     # Se genera un token y se retorna como respuesta
     token=create_access_token(email)
+    
     return jsonify({"token":token}), 200
 
 
